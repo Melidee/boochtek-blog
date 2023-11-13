@@ -1,35 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/"
-	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:atom="http://www.w3.org/2005/Atom"
-	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	>
-
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:wfw="http://wellformedweb.org/CommentAPI/">
 <channel>
-	<title>OOP &#8211; BoochTek, LLC</title>
-	<atom:link href="./category/programming/oop/feed" rel="self" type="application/rss+xml" />
-	<link>http://blog.boochtek.com</link>
+<title>OOP – BoochTek, LLC</title>
+<atom:link href="http://blog.boochtek.com/category/programming/oop/feed" rel="self" type="application/rss+xml"></atom:link>
+<link/>http://blog.boochtek.com
 	<description>Web Development, Ruby on Rails, Open Source</description>
-	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
-	<language>en-US</language>
-	<sy:updatePeriod>hourly</sy:updatePeriod>
-	<sy:updateFrequency>1</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=4.5.3</generator>
-	<item>
-		<title>Hexagonal Rails Controllers</title>
-		<link>./2015/02/23/hexagonal-rails-controllers</link>
-		<comments>./2015/02/23/hexagonal-rails-controllers#respond</comments>
-		<pubDate>Tue, 24 Feb 2015 05:50:28 +0000</pubDate>
-		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
-				<category><![CDATA[OOP]]></category>
-		<category><![CDATA[Ruby]]></category>
-		<category><![CDATA[Ruby on Rails]]></category>
-
-		<guid isPermaLink="false">./?p=202</guid>
-		<description><![CDATA[I&#8217;ve had a long love-hate relationship with Rails. I love the MVC framework and how it&#8217;s improved our speed of writing web apps. But I&#8217;ve never really been completely happy with it. I don&#8217;t generally agree with most of its opinions. I prefer models that follow the Data Mapper pattern, not the Active Record pattern. This includes separating the persistence &#8230; <a href="./2015/02/23/hexagonal-rails-controllers" class="more-link">Continue reading<span class="screen-reader-text"> "Hexagonal Rails Controllers"</span></a>]]></description>
-				<content:encoded><![CDATA[<p>I&#8217;ve had a long love-hate relationship with Rails. I love the MVC framework and how it&#8217;s improved our speed of writing web apps. But I&#8217;ve never really been completely happy with it. I don&#8217;t generally agree with most of its opinions. I prefer models that follow the Data Mapper pattern, not the Active Record pattern. This includes separating the persistence layer from the models&#8217; business logic. I prefer Slim or HAML to ERB. I prefer RSpec to Test::Unit or MiniTest. When Merb hit the scene, I was ready to make the jump, until Merb merged with Rails.</p>
+<lastbuilddate>Thu, 07 Jul 2016 04:22:08 +0000</lastbuilddate>
+<language>en-US</language>
+<sy:updateperiod>hourly</sy:updateperiod>
+<sy:updatefrequency>1</sy:updatefrequency>
+<generator>https://wordpress.org/?v=4.5.3</generator>
+<item>
+<title>Hexagonal Rails Controllers</title>
+<link/>http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers
+		<comments>http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers#respond</comments>
+<pubdate>Tue, 24 Feb 2015 05:50:28 +0000</pubdate>
+<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+<category><![CDATA[OOP]]></category>
+<category><![CDATA[Ruby]]></category>
+<category><![CDATA[Ruby on Rails]]></category>
+<guid ispermalink="false">http://blog.boochtek.com/?p=202</guid>
+<description><![CDATA[I&#8217;ve had a long love-hate relationship with Rails. I love the MVC framework and how it&#8217;s improved our speed of writing web apps. But I&#8217;ve never really been completely happy with it. I don&#8217;t generally agree with most of its opinions. I prefer models that follow the Data Mapper pattern, not the Active Record pattern. This includes separating the persistence &#8230; <a href="http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers" class="more-link">Continue reading<span class="screen-reader-text"> "Hexagonal Rails Controllers"</span></a>]]></description>
+<content:encoded><![CDATA[<p>I&#8217;ve had a long love-hate relationship with Rails. I love the MVC framework and how it&#8217;s improved our speed of writing web apps. But I&#8217;ve never really been completely happy with it. I don&#8217;t generally agree with most of its opinions. I prefer models that follow the Data Mapper pattern, not the Active Record pattern. This includes separating the persistence layer from the models&#8217; business logic. I prefer Slim or HAML to ERB. I prefer RSpec to Test::Unit or MiniTest. When Merb hit the scene, I was ready to make the jump, until Merb merged with Rails.</p>
 <p>So inspired by <a href="https://blog.engineyard.com/2015/life-beyond-rails-brief-look-alternate-web-frameworks-ruby">PJ Hagerty&#8217;s recent article on alternative Ruby web frameworks</a>, I started thinking about how I&#8217;d write a replacement for Rails. I&#8217;d definitely keep the basic MVC framework. But I&#8217;d also want to implement a more <a href="http://alistair.cockburn.us/Hexagonal+architecture">hexagonal architecture</a>.</p>
 <p>I started sketching out what this would look like, but I ended up starting with a Rails controller and finding the simplest way to make it hexagonal. I really don&#8217;t like callbacks, because they make tracing program execution difficult. But I didn&#8217;t see any other alternative. I found a simple pub/sub Ruby library called Wisper. It literally has only <code>publish</code>, <code>subscribe</code>, and <code>on</code> methods. (You use <code>on</code> to register single callbacks via blocks, and <code>subscribe</code> to register an object with method names corresponding to the callback names.)</p>
 <p>The trick was figuring out how to break the controller into 2 pieces. What finally helped me was to find the single responsibilities of the 2 pieces. The Rails controller would remain in charge of managing the web interface, but would delegate to the other piece to handle any application-specific business logic. I decided to re-watch <a href="http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years">Uncle Bob Martin&#8217;s &#8220;Architecture The Lost Years&#8221; talk</a>, which was the first time I was introduced to the ideas of Hexagonal Architecture. (He doesn&#8217;t name the architecture in the talk, but later calls it Clean Architecture.) He does a decent job of explaining how to break these 2 pieces apart. He used the term &#8220;interactor&#8221; in that talk, so I decided to go with that. He said that Jacobsen calls it a Control Object in <a href="http://www.amazon.com/Object-Oriented-Software-Engineering-Approach/dp/0201544350">Object Oriented Software Engineering</a>, but that&#8217;s too close to Rails&#8217;s &#8220;controller&#8221;.</p>
@@ -75,22 +66,21 @@ end</pre>
 <p>With the business logic extracted out of the controller, it was really easy for me to write a command-line version of the app. As Uncle Bob says, &#8220;the web is not particularly important to your application.&#8221;</p>
 <p>I&#8217;ve put the code for this example on GitHub: <a href="https://github.com/boochtek/hexagonal-rails">https://github.com/boochtek/hexagonal-rails</a>. I&#8217;ll likely experiment with it some more over the next few weeks and months.</p>
 ]]></content:encoded>
-			<wfw:commentRss>./2015/02/23/hexagonal-rails-controllers/feed</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-		</item>
-		<item>
-		<title>Includable ActiveRecord</title>
-		<link>./2014/02/10/includable-activerecord</link>
-		<comments>./2014/02/10/includable-activerecord#respond</comments>
-		<pubDate>Mon, 10 Feb 2014 18:09:53 +0000</pubDate>
-		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
-				<category><![CDATA[OOP]]></category>
-		<category><![CDATA[Ruby]]></category>
-		<category><![CDATA[Ruby on Rails]]></category>
-
-		<guid isPermaLink="false">./?p=104</guid>
-		<description><![CDATA[I created a Ruby gem recently, called includable-activerecord. It&#8217;s pretty small, but I thought I might explain why I created it, and discuss its implementation. Classical Inheritance When you use ActiveRecord, you normally include it in your model like this: class User &#60; ActiveRecord::Base # ... end Your User class is inheriting from the ActiveRecord::Base &#8230; <a href="./2014/02/10/includable-activerecord" class="more-link">Continue reading<span class="screen-reader-text"> "Includable ActiveRecord"</span></a>]]></description>
-				<content:encoded><![CDATA[<p>I created a Ruby gem recently, called <a href="https://github.com/boochtek/includable-activerecord">includable-activerecord</a>. It&#8217;s pretty small, but I thought I might explain why I created it, and discuss its implementation.</p>
+<wfw:commentrss>http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers/feed</wfw:commentrss>
+<slash:comments>0</slash:comments>
+</item>
+<item>
+<title>Includable ActiveRecord</title>
+<link/>http://blog.boochtek.com/2014/02/10/includable-activerecord
+		<comments>http://blog.boochtek.com/2014/02/10/includable-activerecord#respond</comments>
+<pubdate>Mon, 10 Feb 2014 18:09:53 +0000</pubdate>
+<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+<category><![CDATA[OOP]]></category>
+<category><![CDATA[Ruby]]></category>
+<category><![CDATA[Ruby on Rails]]></category>
+<guid ispermalink="false">http://blog.boochtek.com/?p=104</guid>
+<description><![CDATA[I created a Ruby gem recently, called includable-activerecord. It&#8217;s pretty small, but I thought I might explain why I created it, and discuss its implementation. Classical Inheritance When you use ActiveRecord, you normally include it in your model like this: class User &#60; ActiveRecord::Base # ... end Your User class is inheriting from the ActiveRecord::Base &#8230; <a href="http://blog.boochtek.com/2014/02/10/includable-activerecord" class="more-link">Continue reading<span class="screen-reader-text"> "Includable ActiveRecord"</span></a>]]></description>
+<content:encoded><![CDATA[<p>I created a Ruby gem recently, called <a href="https://github.com/boochtek/includable-activerecord">includable-activerecord</a>. It&#8217;s pretty small, but I thought I might explain why I created it, and discuss its implementation.</p>
 <h1>Classical Inheritance</h1>
 <p>When you use ActiveRecord, you normally include it in your model like this:</p>
 <pre>class User &lt; ActiveRecord::Base
@@ -117,22 +107,21 @@ There are a few problems with this. First, what is a &#8220;base&#8221;? The nam
 end</pre>
 <p>It was exciting to be able to make this work. Since I wrote it as a proof of concept, I haven&#8217;t written any tests yet. But it seems to be working just fine. The main thing I really need to look into is making sure that plugins that extend <code>ActiveRecord::Base</code> from their own code will still work. I&#8217;m pretty sure this will work out of the box, because the <code>ActiveRecord::Model.included</code> doesn&#8217;t run until the model class is loaded, and that happens after those plugins have initialized themselves.</p>
 ]]></content:encoded>
-			<wfw:commentRss>./2014/02/10/includable-activerecord/feed</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-		</item>
-		<item>
-		<title>Testing Rails Validators</title>
-		<link>./2014/01/26/testing-rails-validators</link>
-		<comments>./2014/01/26/testing-rails-validators#respond</comments>
-		<pubDate>Mon, 27 Jan 2014 05:27:07 +0000</pubDate>
-		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
-				<category><![CDATA[OOP]]></category>
-		<category><![CDATA[Ruby on Rails]]></category>
-		<category><![CDATA[TDD]]></category>
-
-		<guid isPermaLink="false">./?p=93</guid>
-		<description><![CDATA[It&#8217;s challenging to test Rails custom validators. I recently had to write a validator to require that an entered date is before or after a specified date. It didn&#8217;t seem like writing the validator would be too difficult &#8211; I&#8217;ve written custom validators before, and date comparisons aren&#8217;t all that tricky. But when it came time to &#8230; <a href="./2014/01/26/testing-rails-validators" class="more-link">Continue reading<span class="screen-reader-text"> "Testing Rails Validators"</span></a>]]></description>
-				<content:encoded><![CDATA[<p>It&#8217;s challenging to test Rails custom validators.</p>
+<wfw:commentrss>http://blog.boochtek.com/2014/02/10/includable-activerecord/feed</wfw:commentrss>
+<slash:comments>0</slash:comments>
+</item>
+<item>
+<title>Testing Rails Validators</title>
+<link/>http://blog.boochtek.com/2014/01/26/testing-rails-validators
+		<comments>http://blog.boochtek.com/2014/01/26/testing-rails-validators#respond</comments>
+<pubdate>Mon, 27 Jan 2014 05:27:07 +0000</pubdate>
+<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+<category><![CDATA[OOP]]></category>
+<category><![CDATA[Ruby on Rails]]></category>
+<category><![CDATA[TDD]]></category>
+<guid ispermalink="false">http://blog.boochtek.com/?p=93</guid>
+<description><![CDATA[It&#8217;s challenging to test Rails custom validators. I recently had to write a validator to require that an entered date is before or after a specified date. It didn&#8217;t seem like writing the validator would be too difficult &#8211; I&#8217;ve written custom validators before, and date comparisons aren&#8217;t all that tricky. But when it came time to &#8230; <a href="http://blog.boochtek.com/2014/01/26/testing-rails-validators" class="more-link">Continue reading<span class="screen-reader-text"> "Testing Rails Validators"</span></a>]]></description>
+<content:encoded><![CDATA[<p>It&#8217;s challenging to test Rails custom validators.</p>
 <p>I recently had to write a validator to require that an entered date is before or after a specified date.</p>
 <p>It didn&#8217;t seem like writing the validator would be too difficult &#8211; I&#8217;ve written custom validators before, and date comparisons aren&#8217;t all that tricky. But when it came time to write the tests, I ran into several issues. And since I always try to follow TDD / test-first, I was blocked before I even began.</p>
 <p>The biggest issue was the <code>ActiveModel::EachValidator#validates_each</code> API. It&#8217;s definitely not a well-designed API. You write your validator as a subclass, overriding <code>validates_each</code>. The method takes a model object, the name of the attribute of the model being tested, and the value of that attribute. You can also get the options passed to the custom validator via the <code>options</code> method. To perform a validation, you have to update the model&#8217;s <code>errors</code> hash.</p>
@@ -166,8 +155,8 @@ end</pre>
 end</pre>
 <p>Integration testing can also be a bit of a challenge. I recommend following the example from <a href="http://stackoverflow.com/a/17739176">this Stack Overflow answer</a>. Basically, create a minimal model object that contains the field and the validation. Then test that the model behaves like you expect with different values and validations.</p>
 ]]></content:encoded>
-			<wfw:commentRss>./2014/01/26/testing-rails-validators/feed</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-		</item>
-	</channel>
+<wfw:commentrss>http://blog.boochtek.com/2014/01/26/testing-rails-validators/feed</wfw:commentrss>
+<slash:comments>0</slash:comments>
+</item>
+</channel>
 </rss>

@@ -23,7 +23,7 @@ else {
 	if ( replyRowContainer ) {
 		var children = replyRowContainer.getElementsByTagName( 'td' );
 
-		if ( children.length > 0 ) {
+		if ( children.length &gt; 0 ) {
 			children[0].appendChild( ak_js );
 		}
 	}

@@ -1,33 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/"
-	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:atom="http://www.w3.org/2005/Atom"
-	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	>
-
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:wfw="http://wellformedweb.org/CommentAPI/">
 <channel>
-	<title>Security &#8211; BoochTek, LLC</title>
-	<atom:link href="./category/security/feed" rel="self" type="application/rss+xml" />
-	<link>http://blog.boochtek.com</link>
+<title>Security – BoochTek, LLC</title>
+<atom:link href="http://blog.boochtek.com/category/security/feed" rel="self" type="application/rss+xml"></atom:link>
+<link/>http://blog.boochtek.com
 	<description>Web Development, Ruby on Rails, Open Source</description>
-	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
-	<language>en-US</language>
-	<sy:updatePeriod>hourly</sy:updatePeriod>
-	<sy:updateFrequency>1</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=4.5.3</generator>
-	<item>
-		<title>Potential F5 Vulnerability</title>
-		<link>./2015/08/31/potential-f5-vulnerability</link>
-		<comments>./2015/08/31/potential-f5-vulnerability#respond</comments>
-		<pubDate>Tue, 01 Sep 2015 03:52:53 +0000</pubDate>
-		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
-				<category><![CDATA[Security]]></category>
-
-		<guid isPermaLink="false">./?p=249</guid>
-		<description><![CDATA[It all started with an email about a WebInspect report. It listed a buffer overflow, which we had marked as a false positive. I read the WebInspect report carefully, and found a note at the bottom that said you could test manually to confirm whether it was a false positive or not. Unfortunately, the manual test listed had a &#8230; <a href="./2015/08/31/potential-f5-vulnerability" class="more-link">Continue reading<span class="screen-reader-text"> "Potential F5 Vulnerability"</span></a>]]></description>
-				<content:encoded><![CDATA[<p>It all started with an email about a WebInspect report. It listed a buffer overflow, which we had marked as a false positive. I read the WebInspect report carefully, and found a note at the bottom that said you could test manually to confirm whether it was a false positive or not. Unfortunately, the manual test listed had a few problems. First, it jammed the lines together, without the proper line-breaks. Second, it assumed the site was using HTTP, not HTTPS, so used <code>telnet</code>. Third, it was testing against a page that didn&#8217;t exist, giving a 404. Keeping those in mind, I tried the manual test using the <code>openssl s_client</code> command:</p>
+<lastbuilddate>Thu, 07 Jul 2016 04:22:08 +0000</lastbuilddate>
+<language>en-US</language>
+<sy:updateperiod>hourly</sy:updateperiod>
+<sy:updatefrequency>1</sy:updatefrequency>
+<generator>https://wordpress.org/?v=4.5.3</generator>
+<item>
+<title>Potential F5 Vulnerability</title>
+<link/>http://blog.boochtek.com/2015/08/31/potential-f5-vulnerability
+		<comments>http://blog.boochtek.com/2015/08/31/potential-f5-vulnerability#respond</comments>
+<pubdate>Tue, 01 Sep 2015 03:52:53 +0000</pubdate>
+<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+<category><![CDATA[Security]]></category>
+<guid ispermalink="false">http://blog.boochtek.com/?p=249</guid>
+<description><![CDATA[It all started with an email about a WebInspect report. It listed a buffer overflow, which we had marked as a false positive. I read the WebInspect report carefully, and found a note at the bottom that said you could test manually to confirm whether it was a false positive or not. Unfortunately, the manual test listed had a &#8230; <a href="http://blog.boochtek.com/2015/08/31/potential-f5-vulnerability" class="more-link">Continue reading<span class="screen-reader-text"> "Potential F5 Vulnerability"</span></a>]]></description>
+<content:encoded><![CDATA[<p>It all started with an email about a WebInspect report. It listed a buffer overflow, which we had marked as a false positive. I read the WebInspect report carefully, and found a note at the bottom that said you could test manually to confirm whether it was a false positive or not. Unfortunately, the manual test listed had a few problems. First, it jammed the lines together, without the proper line-breaks. Second, it assumed the site was using HTTP, not HTTPS, so used <code>telnet</code>. Third, it was testing against a page that didn&#8217;t exist, giving a 404. Keeping those in mind, I tried the manual test using the <code>openssl s_client</code> command:</p>
 <pre>openssl s_client -quiet -connect mysite.example.com:443
 POST /login HTTP/1.1
 Host: mysite.example.com
@@ -40,26 +31,25 @@ c00000000</pre>
 <p>I&#8217;m disclosing this publicly now for a few reasons. First, I&#8217;m not a security researcher, and almost nobody follows my blog &#8212; especially people looking for security issues that could be exploited. Second, I&#8217;ve not developed a payload, so I have no idea whether this is exploitable. But at this point, it&#8217;s merely a potential vulnerability. I&#8217;m not sure I&#8217;ll even spend the time to research and create a payload to prove the vulnerability. If I do, I&#8217;ll be more careful with the disclosure.</p>
 <p>&nbsp;</p>
 ]]></content:encoded>
-			<wfw:commentRss>./2015/08/31/potential-f5-vulnerability/feed</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-		</item>
-		<item>
-		<title>Resolutions</title>
-		<link>./2015/02/02/resolutions</link>
-		<comments>./2015/02/02/resolutions#respond</comments>
-		<pubDate>Tue, 03 Feb 2015 05:42:13 +0000</pubDate>
-		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
-				<category><![CDATA[Agile]]></category>
-		<category><![CDATA[Blogging]]></category>
-		<category><![CDATA[Brilliant]]></category>
-		<category><![CDATA[Resolutions]]></category>
-		<category><![CDATA[Security]]></category>
-
-		<guid isPermaLink="false">./?p=198</guid>
-		<description><![CDATA[January kept me pretty busy, so I&#8217;m a little late to this. But better late than never. And as an Agile practitioner, I don&#8217;t think personal retrospectives should be limited to one time of year. Review of 2014 Last year I wrote a blog entry listing my goals for 2014. As far as New Year&#8217;s resolutions go, I &#8230; <a href="./2015/02/02/resolutions" class="more-link">Continue reading<span class="screen-reader-text"> "Resolutions"</span></a>]]></description>
-				<content:encoded><![CDATA[<p>January kept me pretty busy, so I&#8217;m a little late to this. But better late than never. And as an Agile practitioner, I don&#8217;t think personal retrospectives should be limited to one time of year.</p>
+<wfw:commentrss>http://blog.boochtek.com/2015/08/31/potential-f5-vulnerability/feed</wfw:commentrss>
+<slash:comments>0</slash:comments>
+</item>
+<item>
+<title>Resolutions</title>
+<link/>http://blog.boochtek.com/2015/02/02/resolutions
+		<comments>http://blog.boochtek.com/2015/02/02/resolutions#respond</comments>
+<pubdate>Tue, 03 Feb 2015 05:42:13 +0000</pubdate>
+<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+<category><![CDATA[Agile]]></category>
+<category><![CDATA[Blogging]]></category>
+<category><![CDATA[Brilliant]]></category>
+<category><![CDATA[Resolutions]]></category>
+<category><![CDATA[Security]]></category>
+<guid ispermalink="false">http://blog.boochtek.com/?p=198</guid>
+<description><![CDATA[January kept me pretty busy, so I&#8217;m a little late to this. But better late than never. And as an Agile practitioner, I don&#8217;t think personal retrospectives should be limited to one time of year. Review of 2014 Last year I wrote a blog entry listing my goals for 2014. As far as New Year&#8217;s resolutions go, I &#8230; <a href="http://blog.boochtek.com/2015/02/02/resolutions" class="more-link">Continue reading<span class="screen-reader-text"> "Resolutions"</span></a>]]></description>
+<content:encoded><![CDATA[<p>January kept me pretty busy, so I&#8217;m a little late to this. But better late than never. And as an Agile practitioner, I don&#8217;t think personal retrospectives should be limited to one time of year.</p>
 <h1>Review of 2014</h1>
-<p>Last year I wrote a blog entry listing <a href="./2014/01/04/open-source-resolutions">my goals for 2014</a>. As far as New Year&#8217;s resolutions go, I was relatively successful &#8212; about 50% of my goals accomplished. Unfortunately, my Open Source contributions weren&#8217;t as strong as I had hoped; while I released some of my own work, I didn&#8217;t do much else. I did increase my blogging; getting in on a weekly blogging pact helped immensely. I also increased my participation on the <a href="http://thisagilelife.com/">This Agile Life podcast</a> to a level that I&#8217;m happy with. But the accomplishment I&#8217;m most proud of was giving a <a href="https://www.youtube.com/watch?v=hc_wtllfKtQ">presentation at RubyConf</a>.</p>
+<p>Last year I wrote a blog entry listing <a href="http://blog.boochtek.com/2014/01/04/open-source-resolutions">my goals for 2014</a>. As far as New Year&#8217;s resolutions go, I was relatively successful &#8212; about 50% of my goals accomplished. Unfortunately, my Open Source contributions weren&#8217;t as strong as I had hoped; while I released some of my own work, I didn&#8217;t do much else. I did increase my blogging; getting in on a weekly blogging pact helped immensely. I also increased my participation on the <a href="http://thisagilelife.com/">This Agile Life podcast</a> to a level that I&#8217;m happy with. But the accomplishment I&#8217;m most proud of was giving a <a href="https://www.youtube.com/watch?v=hc_wtllfKtQ">presentation at RubyConf</a>.</p>
 <h1>Plans for 2015</h1>
 <p>I&#8217;d like to keep things rolling from last year, but crank up a few things. My plans are quite ambitious, so I don&#8217;t expect to get everything done by any means. But I think by setting the bar high, I&#8217;ll end up with a lot I can be proud of.</p>
 <h2>Job Hunting</h2>
@@ -70,27 +60,26 @@ c00000000</pre>
 <p>I believe that blogging is important for me to get my thoughts down &#8212; for myself and to share with others. I was really successful last year when I had a partner to keep me honest, via a pact. So I&#8217;ve started up <a href="https://github.com/booch/pact">another pact</a> this year, which will hopefully ensure I&#8217;ll keep things going. I&#8217;ve got a really long backlog of topics, so as long as I keep at it, I&#8217;ll have plenty to write about.</p>
 <p>I also want to move away from WordPress to a static system &#8212; probably <a href="https://middlemanapp.com/">Middleman</a>. I&#8217;ve got 2 major problems with WordPress. First, I no longer trust its security, nor the security of any application written in PHP. Second, it generates HTML every time someone requests a page, instead of when the content is updated. I find that to be a waste of resources, and problematic from a security standpoint. The main problem with moving to a static blogging system is that I really want to allow comments, pingbacks, and tweetbacks. So I&#8217;ll have to find a way to integrate those.</p>
 <h2>Programming Language Design</h2>
-<p>Last year I started thinking about programming language design, and started implementing a language tentatively called <a href="./2014/03/30/brilliant-my-own-programming-language">Brilliant</a>. I&#8217;ve done a lot more thinking on the topic, and have a lot of notes. But I haven&#8217;t implemented much more yet. This year, I&#8217;d like to get my thoughts more organized, and write a series of blog posts on various aspects of language design. The most interesting part seems to be the trade-offs involved in the ways that various language features interact. So I&#8217;d like to make some progress on the language implementation, but more importantly, I&#8217;d like to get a lot of my design ideas written down.</p>
+<p>Last year I started thinking about programming language design, and started implementing a language tentatively called <a href="http://blog.boochtek.com/2014/03/30/brilliant-my-own-programming-language">Brilliant</a>. I&#8217;ve done a lot more thinking on the topic, and have a lot of notes. But I haven&#8217;t implemented much more yet. This year, I&#8217;d like to get my thoughts more organized, and write a series of blog posts on various aspects of language design. The most interesting part seems to be the trade-offs involved in the ways that various language features interact. So I&#8217;d like to make some progress on the language implementation, but more importantly, I&#8217;d like to get a lot of my design ideas written down.</p>
 <p>I&#8217;m also going to spend a lot of time learning a bunch more programming languages, so I have a better understanding of possible features, combinations of features, and their interactions. I&#8217;ve already start with Elixir, Clojure, and Racket. I&#8217;m hoping to also look at OCaml, Factor, and Haskell. I&#8217;ll probably also take a look at the 2 &#8220;Seven Languages in Seven Weeks&#8221; books.</p>
 <h2>Agile Book</h2>
 <p>I think people often have trouble getting started with Agile. I started on a book last year, and got down quite a lot of good ideas. But I realized that I&#8217;m going to have a hard time organizing all those ideas into something coherent. Still, I&#8217;d like to try to get something out there that lets people get started with Agile. My idea is to present a toolbox of practices to get started with and build on that foundation over time with additional practices. Sort of a playbook on how to get started over the first 6 to 12 months and be successful. I want to make some progress on the book, at least enough to decide whether it&#8217;s worth the effort to finish it and self-publish it.</p>
 <p>&nbsp;</p>
 ]]></content:encoded>
-			<wfw:commentRss>./2015/02/02/resolutions/feed</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-		</item>
-		<item>
-		<title>Empathy</title>
-		<link>./2014/02/07/empathy</link>
-		<comments>./2014/02/07/empathy#respond</comments>
-		<pubDate>Sat, 08 Feb 2014 03:23:48 +0000</pubDate>
-		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
-				<category><![CDATA[Agile]]></category>
-		<category><![CDATA[Security]]></category>
-
-		<guid isPermaLink="false">./?p=116</guid>
-		<description><![CDATA[I facilitated our team retrospective this morning. I felt like we made a little forward progress, but not as much as I would have liked. But it really brought one thing to the forefront of my thoughts today &#8212; empathy gained through communication. We have a pretty large team by Agile standards &#8212; we had 20 &#8230; <a href="./2014/02/07/empathy" class="more-link">Continue reading<span class="screen-reader-text"> "Empathy"</span></a>]]></description>
-				<content:encoded><![CDATA[<p>I facilitated our team retrospective this morning. I felt like we made a little forward progress, but not as much as I would have liked. But it really brought one thing to the forefront of my thoughts today &#8212; empathy gained through communication.</p>
+<wfw:commentrss>http://blog.boochtek.com/2015/02/02/resolutions/feed</wfw:commentrss>
+<slash:comments>0</slash:comments>
+</item>
+<item>
+<title>Empathy</title>
+<link/>http://blog.boochtek.com/2014/02/07/empathy
+		<comments>http://blog.boochtek.com/2014/02/07/empathy#respond</comments>
+<pubdate>Sat, 08 Feb 2014 03:23:48 +0000</pubdate>
+<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+<category><![CDATA[Agile]]></category>
+<category><![CDATA[Security]]></category>
+<guid ispermalink="false">http://blog.boochtek.com/?p=116</guid>
+<description><![CDATA[I facilitated our team retrospective this morning. I felt like we made a little forward progress, but not as much as I would have liked. But it really brought one thing to the forefront of my thoughts today &#8212; empathy gained through communication. We have a pretty large team by Agile standards &#8212; we had 20 &#8230; <a href="http://blog.boochtek.com/2014/02/07/empathy" class="more-link">Continue reading<span class="screen-reader-text"> "Empathy"</span></a>]]></description>
+<content:encoded><![CDATA[<p>I facilitated our team retrospective this morning. I felt like we made a little forward progress, but not as much as I would have liked. But it really brought one thing to the forefront of my thoughts today &#8212; empathy gained through communication.</p>
 <p>We have a pretty large team by Agile standards &#8212; we had 20 people in our retro: 16 developers, 3 QA folks, and 1 manager. Out of those, only about 5 or 6 speak up regularly. I recently sent out a survey to the team, trying to get feedback on how we could improve our retros. A couple of the questions tried to get a feel for why people aren&#8217;t speaking up more. Only about half the people responded, and the answers didn&#8217;t really answer my question as well as I had hoped.</p>
 <p>So on <a href="http://dirtyinformation.com/">Amos</a>&#8216;s suggestion, we did the <a href="http://www.akashb.com/blog/2012/05/28/agile-retrospectives-the-safety-check/">Safety Check</a> exercise. We got a good set of answers to why people don&#8217;t feel safe. About half of the answers were about the fear of looking stupid in front of other people. About half of <em>those</em> mentioned the manager &#8212; they&#8217;re worried they might get in trouble for what they say. We talked some about fear and how it&#8217;s more often than not misplaced. And that the worst consequences are usually not as bad as you might think. But then we got to the crux of the problem &#8212; there&#8217;s not enough trust amongst the team, and especially between the team members and the manager.</p>
 <p>About half of our team is new (within the past 6 months) &#8212; including the manager. While the developers have made some good progress building trust amongst each other, we haven&#8217;t had as much time with the manager to build trust between him and the rest of the team. So the lack of trust isn&#8217;t at all surprising.</p>
@@ -101,22 +90,21 @@ c00000000</pre>
 <p>So if you&#8217;re looking to build trust with someone, spend some time talking with them. Preferably in person, but if that&#8217;s not possible, seriously consider video or voice modes of communication, instead of sending an email or an instant message.</p>
 <p>&nbsp;</p>
 ]]></content:encoded>
-			<wfw:commentRss>./2014/02/07/empathy/feed</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-		</item>
-		<item>
-		<title>What I Want in a Blog Engine</title>
-		<link>./2014/02/02/blogging-software</link>
-		<comments>./2014/02/02/blogging-software#respond</comments>
-		<pubDate>Mon, 03 Feb 2014 04:50:43 +0000</pubDate>
-		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
-				<category><![CDATA[Blogging]]></category>
-		<category><![CDATA[Security]]></category>
-		<category><![CDATA[System Admin]]></category>
-
-		<guid isPermaLink="false">./?p=100</guid>
-		<description><![CDATA[I&#8217;m considering moving away from WordPress, for a couple reasons: Security. There have been several vulnerabilities over the past few years, and I&#8217;ve never really had a high level of confidence that it&#8217;s secure. In addition, I now find the whole PHP model &#8212; every web app running as a single user, instead of leveraging UNIX &#8230; <a href="./2014/02/02/blogging-software" class="more-link">Continue reading<span class="screen-reader-text"> "What I Want in a Blog Engine"</span></a>]]></description>
-				<content:encoded><![CDATA[<p>I&#8217;m considering moving away from <a href="http://wordpress.org">WordPress</a>, for a couple reasons:</p>
+<wfw:commentrss>http://blog.boochtek.com/2014/02/07/empathy/feed</wfw:commentrss>
+<slash:comments>0</slash:comments>
+</item>
+<item>
+<title>What I Want in a Blog Engine</title>
+<link/>http://blog.boochtek.com/2014/02/02/blogging-software
+		<comments>http://blog.boochtek.com/2014/02/02/blogging-software#respond</comments>
+<pubdate>Mon, 03 Feb 2014 04:50:43 +0000</pubdate>
+<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+<category><![CDATA[Blogging]]></category>
+<category><![CDATA[Security]]></category>
+<category><![CDATA[System Admin]]></category>
+<guid ispermalink="false">http://blog.boochtek.com/?p=100</guid>
+<description><![CDATA[I&#8217;m considering moving away from WordPress, for a couple reasons: Security. There have been several vulnerabilities over the past few years, and I&#8217;ve never really had a high level of confidence that it&#8217;s secure. In addition, I now find the whole PHP model &#8212; every web app running as a single user, instead of leveraging UNIX &#8230; <a href="http://blog.boochtek.com/2014/02/02/blogging-software" class="more-link">Continue reading<span class="screen-reader-text"> "What I Want in a Blog Engine"</span></a>]]></description>
+<content:encoded><![CDATA[<p>I&#8217;m considering moving away from <a href="http://wordpress.org">WordPress</a>, for a couple reasons:</p>
 <ul>
 <li>Security. There have been several vulnerabilities over the past few years, and I&#8217;ve never really had a high level of confidence that it&#8217;s secure. In addition, I now find the whole PHP model &#8212; every web app running as a single user, instead of leveraging UNIX permissions &#8212; to be broken.</li>
 <li>Speed. I started to realize a couple years ago that a blog engine should generate static pages. The static pages should be updated whenever new content is added. There&#8217;s really no reason to re-generate the page every time someone wants to read it. At the very least, Server-Side Includes (<a href="https://en.wikipedia.org/wiki/Server_Side_Includes">SSI</a>) or Edge-Side Includes (<a href="https://en.wikipedia.org/wiki/Edge_Side_Includes">ESI</a>) should be used.</li>
@@ -162,8 +150,8 @@ c00000000</pre>
 <p>Unfortunately, that seems to be all there is in this space. Maybe I need to investigate more. Or maybe Octopress just has the static blog generation marked cornered. Either way, I&#8217;ll probably change my blogging software in the next month or two. Wish me luck!</p>
 <p>&nbsp;</p>
 ]]></content:encoded>
-			<wfw:commentRss>./2014/02/02/blogging-software/feed</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-		</item>
-	</channel>
+<wfw:commentrss>http://blog.boochtek.com/2014/02/02/blogging-software/feed</wfw:commentrss>
+<slash:comments>0</slash:comments>
+</item>
+</channel>
 </rss>
